@@ -132,6 +132,15 @@ steps:
     '${_GCS_COVERAGE_BINARIES_DIR}/',
   ]
 
+- name: 'gcr.io/cloud-builders/gsutil'
+args: [
+  '-m',
+  'cp',
+  '-r',
+  '/out/src-files',
+  '${_GCS_COVERAGE_BINARIES_DIR}/${_BENCHMARK}-source-files/',
+]
+
 images:
   - '${_REPO}/builders/benchmark/${_BENCHMARK}:${_EXPERIMENT}'
   - '${_REPO}/builders/benchmark/${_BENCHMARK}'
