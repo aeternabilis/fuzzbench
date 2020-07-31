@@ -121,8 +121,7 @@ steps:
     '${_REPO}/builders/coverage/${_BENCHMARK}:${_EXPERIMENT}',
     '/bin/bash',
     '-c',
-    'cd /out; tar -czvf /host-out/coverage-build-${_BENCHMARK}.tar.gz *;',
-    'cp -rL /out/src-files-${_BENCHMARK} /host-out/',
+    'cd /out; tar -czvf /host-out/coverage-build-${_BENCHMARK}.tar.gz *',
   ]
 
 - name: 'gcr.io/cloud-builders/gsutil'
@@ -130,15 +129,6 @@ steps:
     '-m',
     'cp',
     '/workspace/out/coverage-build-${_BENCHMARK}.tar.gz',
-    '${_GCS_COVERAGE_BINARIES_DIR}/',
-  ]
-
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: [
-    '-m',
-    'cp',
-    '-r',
-    '/workspace/out/src-files-${_BENCHMARK}',
     '${_GCS_COVERAGE_BINARIES_DIR}/',
   ]
 
