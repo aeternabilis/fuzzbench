@@ -48,5 +48,6 @@ def test_output_report_filestore(fs, experiment):
             mocked_generate_report.assert_called_with(
                 [os.environ['EXPERIMENT']],
                 reports_dir,
+                clang_coverage_reports=False,
                 in_progress=False,
                 merge_with_clobber_nonprivate=False)
